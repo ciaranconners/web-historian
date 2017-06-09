@@ -2,6 +2,8 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('underscore');
 
+
+
 /*
  * You will need to reuse the same paths many times over in the course of this sprint.
  * Consider using the `paths` object below to store frequently used file paths. This way,
@@ -13,6 +15,30 @@ exports.paths = {
   siteAssets: path.join(__dirname, '../web/public'),
   archivedSites: path.join(__dirname, '../archives/sites'),
   list: path.join(__dirname, '../archives/sites.txt')
+};
+
+exports.getRootURL = function(req, res) {
+  fs.readFile(exports.paths.siteAssets + '/index.html', (err, data) => {
+    if (err) { throw err; }
+    console.log(data);
+    res.end(data);
+  });
+};
+
+exports.getStyles = function(req, res) {
+  fs.readFile(exports.paths.siteAssets + '/styles.css', (err, data) => {
+    if (err) { throw err; }
+    console.log(data);
+    res.end(data);
+  });
+};
+
+exports.getGoogle = function(req, res) {
+  fs.readFile(exports.paths.siteAssets + '/index.html', (err, data) => {
+    if (err) { throw err; }
+    console.log('get request for www.google.com');
+    res.end('you asked for google');
+  });
 };
 
 // Used for stubbing paths for tests, do not modify
