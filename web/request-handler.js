@@ -13,7 +13,7 @@ exports.handleRequest = function (req, res) {
       '/www.google.com': archive.getGoogle
     },
     'POST': {
-
+      '/': archive.postURL
     },
     'OPTIONS': {
 
