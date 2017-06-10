@@ -5,7 +5,7 @@ var archive = require('../helpers/archive-helpers');
 
 
 exports.handleRequest = function (req, res) {
-  console.log('handling request: ', req.method,req.url);
+  console.log('handling request: ', req.method, req.url);
   var routes = {
     'GET': {
       '/': archive.getRootURL,
@@ -20,7 +20,7 @@ exports.handleRequest = function (req, res) {
     }
   };
   if (routes.hasOwnProperty(req.method) && routes[req.method].hasOwnProperty(req.url)) {
-    routes[req.method][req.url](req,res);
+    routes[req.method][req.url](req, res);
   } else {
     //catch a 404
     res.writeHead(404);
