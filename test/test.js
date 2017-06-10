@@ -154,5 +154,22 @@ describe('archive helpers', function() {
       }, 500);
     });
   });
-});
 
+  describe('#linkToURLs', function () {
+    it('should provide links to google.com and example.com', function (done) {
+      var urlArray = ['www.example.com', 'www.google.com'];
+      archive.downloadUrls(urlArray);
+
+      // Ugly hack to wait for all downloads to finish.
+      setTimeout(function () {
+        request
+          .get('/')
+          .expect(200, /<a href=\"\/www.example.com/, done);
+        request
+          .get('/')
+          .expect(200, /<a href=\"\/www.google.com/, done);
+        done();
+      }, 1000);
+    });
+  });
+});
