@@ -5,7 +5,7 @@ var archive = require('../helpers/archive-helpers');
 
 
 exports.handleRequest = function (req, res) {
-  console.log('handling request: ',req.method,req.url);
+  console.log('handling request: ', req.method,req.url);
   var routes = {
     'GET': {
       '/': archive.getRootURL,
